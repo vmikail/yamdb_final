@@ -11,8 +11,8 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from api_yamdb.settings import DEFAULT_FROM_EMAIL
-from users.models import User
 from reviews.models import Category, Genre, Review, Title
+from users.models import User
 
 from .filters import TitleFilter
 from .permissions import (IsAdministrator, IsAdminOrReadOnly,
