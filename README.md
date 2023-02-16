@@ -1,3 +1,6 @@
+# yamdb_final
+![yamdb workflow](https://github.com/vmikail/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+
 # Проект YaMDb
 ## Описание проекта
 Проект YaMDb собирает отзывы пользователей на произведения. Сами произведения в YaMDb не хранятся, здесь нельзя посмотреть фильм или послушать музыку.
