@@ -12,13 +12,14 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from api_yamdb.settings import DEFAULT_FROM_EMAIL
 from reviews.models import Category, Genre, Review, Title
+from users.models import User
+
 from .filters import TitleFilter
 from .permissions import (IsAdministrator, IsAdminOrReadOnly,
                           IsOwnerOrReadOnlyFull, IsReadOnly)
 from .serializers import (CategorySerializer, CommentSerializer,
                           GenreSerializer, ReviewSerializer, SignUpSerializer,
                           TitleSerializer, TitleShowSerializer, UserSerializer)
-from users.models import User
 
 
 class ListCreateDestroyViewSet(
