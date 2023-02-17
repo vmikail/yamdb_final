@@ -15,21 +15,39 @@
 - Django 2.2.28
 - DRF
 - JWT
+- Docker
 
 ## Запуск проекта в dev-режиме
-- Клонировать репозиторий и перейти в него в командной строке.
-- Установите виртуальное окружение c учетом версии Python 3.7     (выбираем         python не ниже 3.7):
-    python -m venv venv
-- Активируйте виртуальное окружение
-    source venv/Scripts/activate
-- Затем нужно установить все зависимости из файла requirements.txt
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-- Выполняем миграции:
-    python manage.py migrate
+Клонировать репозиторий и перейти в него в командной строке:
+```
+git clone git@github.com:vmikail/yamdb_final.git
+```
+```
+cd infra
+```
+Развернуть контейнеры:
+```
+docker-compose up -d --build
+```
+В директории /infra создать файл .env с содержимым:
+```
+```
+SECRET_KEY=default-key
+DB_ENGINE=django.db.backends.postgresql 
+DB_NAME=postgres # имя базы данных
+POSTGRES_USER=postgres # логин для подключения к базе данных
+POSTGRES_PASSWORD= # пароль для подключения к БД (установите свой)
+DB_HOST=db # название сервиса (контейнера)
+DB_PORT=5432 # порт для подключения к БД
+HOSTS='*'
+```
+Сделать миграции, суперпользователя и собрать статику:
 
-## Запуск проекта
-    python manage.py runserver
+```
+docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py createsuperuser
+docker-compose exec web python manage.py collectstatic --no-input
+```
 
 ## Эндпоинты
     Подробная документация доступна по эндпоинту /redoc/
